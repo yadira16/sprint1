@@ -1,142 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-    <title>MooshMod</title>
+<html>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+   	<head>
+    	<title>Bears.</title>
+    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    
+    <script type="text/javascript" src="script.js"></script>
 
-    <!-- Need to link Erinn's stylesheet -->
-    <link href="cover.css" rel="stylesheet">
+   	</head>
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+   
+   	
+   	<body>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+<div ng-app="validationApp" ng-controller="mainController">
+<div class="container">
+<div class="row">  
+   
+<div class="col-sm-6">
+    <!-- FORM ============ -->
+  
+    <form name="userForm" ng-submit="submitForm()" novalidate>
 
-  <body>
-    <div>
-
-    <div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Logo Here</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Products</a></li>
-                  <li><a href="#">Login</a></li>
-                  <li><a href="#">Register</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div class="inner cover">
-            <h1 class="cover-heading">Join the Moosh Club</h1>
-            <p class="lead">Be the first to know about our awesome sales and new products.</p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Register</a>
-            </p>
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <div class="social">
-                <a href="link" target="_blank"><i class="fa fa-instagram"></i></a>
-                <a href="link" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a href="link" target="_blank"><i class="fa fa-twitter"></i></a>
-              </div>
-              <div class="copyright">
-              &copy; Moosh Mod 2016
-              </div>
-            </div>
-          </div>
+        <!-- NAME -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" ng-model="user.name" required>
+            <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
         </div>
-      </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> 
+      
+        <!-- USERNAME -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="4" ng-maxlength="8">
+           
+        </div>
+        
+        <!-- EMAIL -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" ng-model="user.email">
+            <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
+        
+    </form>
+  </div>
+  <div class="col-sm-6">
+    <!-- VALIDATION TABLES ======== -->    
+    <div class="row">
+        <div class="col-xs-3">
+            
+</div>
+</div>
+</div>
 </body>
-
-  <!-- Modal Window -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-                <form class="form-horizontal" role="form">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Join the Moosh Club</h4>
-                        <p>Please submit your information below.</p>
-                    </div>
-                      <div class="modal-body">
-
-                        <div class="form-group">
-                            <label for="contact-email" class="col-sm-2 control-label">Email Address</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="contact-name" placeholder="example@gmail.com">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contact-email" class="col-sm-2 control-label">Password</label>
-                            <div class="col-sm-10">
-                              <input type="password" class="form-control" id="password">
-                          	</div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contact-email" class="col-sm-2 control-label">Retype Password</label>
-                            <div class="col-sm-10">
-                              <input type="password" class="form-control" id="password">
-                          	</div>
-                        </div>
-                        
-                        <div class="modal-footer">
-                          <div class="divider"></div>
-                          <button type="submit" class="btn btn-info btn-simple">Submit</button>
-                      </div>  
-                </form>
-          </div>
-      </div>
-  </div>
-
-  <!-- Modal Window Thank You-->
-  <div class="modal-content">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h4>Thank You!</h4>
-  <p>You are now registered as a Moosh mod member. Welcome to the club!</p>
-  </div>
-
-
 </html>
